@@ -1,0 +1,28 @@
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <form class="form-inline">
+            <div class="form-group">
+                <input type="text" class="form-control col-md-4" ng-model="filter" placeholder="Type Here">
+            </div>
+            <div class="radio">
+                <label>
+                    <input class="form-control" type="radio" name="poisonous" value="true" ng-model="query">
+                    Poisonous
+                </label>
+                <label>
+                    <input class="form-control" type="radio" name="non_poisonous" value="false" ng-model="query">
+                    Non-poisonous
+                </label>
+            </div>
+            <button class="btn btn-success" ng-click="query = undefined">Reset</button>
+        </form>
+    </div>
+</nav>
+        <div class="panel panel-success" ng-repeat="item in mushrooms | filter: {name:filter} | filter: {edible:query}">
+            <div class="panel-heading">
+                <h2 class="panel-title">{{item.name}}</h2>
+            </div>
+            <div class="panel-body">
+                <p>{{item.description}}</p>
+            </div>
+        </div>
